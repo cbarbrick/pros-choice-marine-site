@@ -129,7 +129,7 @@ h3.display{font-size:clamp(26px,3.2vw,38px);font-weight:800}
   animation:slowZoom 24s ease-in-out infinite alternate;
   transition:opacity .8s ease;
 }
-.hero-video-wrap.video-ready .hero-poster{opacity:.2}
+.hero-video-wrap.video-ready .hero-poster{opacity:.08}
 @keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.12)}}
 .hero-bgvideo-wrap{
   position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;background:transparent;
@@ -139,10 +139,8 @@ h3.display{font-size:clamp(26px,3.2vw,38px);font-weight:800}
   transform:translate(-50%,-50%);
   width:max(100vw,177.78vh);
   height:max(56.25vw,100vh);
-  border:0;pointer-events:none;opacity:0;
-  transition:opacity .8s ease;
+  border:0;pointer-events:none;opacity:.96;
 }
-.hero-video-wrap.video-ready .hero-bgvideo{opacity:.96}
 .hero-video-overlay{
   position:absolute;inset:0;z-index:5;
   background:
