@@ -1,0 +1,11 @@
+.git/
+.DS_Store
+
+# Do not upload proposal/NDA/planning docs to Vercel.
+*.docx
+*.pages
+~$*
+ECOM/
+
+# Old single-page backup, kept locally only.
+proschoicemarine-revamp.html

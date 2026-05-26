@@ -1,0 +1,12 @@
+# Keep the GitHub repo focused on the website only.
+.DS_Store
+.vercel/
+
+# Proposal, NDA, and planning documents in this working folder.
+*.docx
+*.pages
+~$*
+ECOM/
+
+# Old single-page backup, kept locally only.
+proschoicemarine-revamp.html

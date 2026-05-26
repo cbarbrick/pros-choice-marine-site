@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Boat Finder AI | Pro's Choice Marine</title>
+<meta name="description" content="A first-time-buyer boat finder that recommends the right type, size, and brands for your lake life." />
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="nav" id="siteNav">
+  <div class="nav-in">
+    <a href="index.html" class="logo" aria-label="Pro's Choice Marine"><img class="logo-img" src="https://www.proschoicemarine.com/images/logo-color.png" alt="Pro's Choice Marine"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="brands.html">Brands</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="boat-finder.html" class="active" aria-current="page">Boat Finder</a>
+      <a href="financing.html">Financing</a>
+      <a href="sell-trade.html">Sell / Trade</a>
+      <a href="service.html">Service</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:8778272840" class="nav-phone">(877) 827-2840</a>
+      <a href="boat-finder.html" class="btn btn-accent">Find My Boat</a>
+      <button class="mob-toggle" id="mobToggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+<main>
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Boat Finder AI</span>
+    <h1>First boat? <em>Start here.</em></h1>
+    <p class="lede">Answer five quick questions and get a recommendation for hull type, size, and brands that fit how you want to use the water.</p>
+  </div>
+</section>
+<section class="block ink-section">
+  <div class="container">
+    <div class="finder-wrap">
+      <div>
+        <span class="eyebrow">The Right Match</span>
+        <h2 class="display" style="margin-top:18px;margin-bottom:24px;color:#fff">Simple questions. <em style="color:var(--accent)">Real recommendation.</em></h2>
+        <p class="lede" style="margin-bottom:28px;color:#b8b6ad">This is built for first-time buyers who know the feeling they want on the water but not the exact boat model yet.</p>
+        <div class="split-list">
+          <div class="detail-tile" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)"><h4 style="color:#fff">Use</h4><p>Fishing, family cruising, watersports, or a little of everything.</p></div>
+          <div class="detail-tile" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)"><h4 style="color:#fff">Size</h4><p>Group size and water type shape the right length and layout.</p></div>
+          <div class="detail-tile" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)"><h4 style="color:#fff">Budget</h4><p>Keep the match honest before monthly payment talk starts.</p></div>
+          <div class="detail-tile" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)"><h4 style="color:#fff">Brand</h4><p>Get pointed toward Tracker, Sun Tracker, Tahoe, Nitro, Ranger, Triton, or Regency.</p></div>
+        </div>
+      </div>
+      <div class="finder-card">
+  <div class="finder-prog"><div class="bar" id="finderBar"></div></div>
+  <div class="finder-body">
+    <div class="finder-step active" data-step="1">
+      <div class="q-eyebrow">Step 1 of 5</div>
+      <div class="q-title">What will you mostly do on the water?</div>
+      <div class="q-grid">
+        <button class="q-option" data-q="use" data-v="fishing"><div class="icon">🎣</div><div><div class="label">Fishing</div><div class="desc">Bass, crappie, walleye</div></div></button>
+        <button class="q-option" data-q="use" data-v="family"><div class="icon">☀</div><div><div class="label">Family Days Out</div><div class="desc">Cruising, swimming, picnics</div></div></button>
+        <button class="q-option" data-q="use" data-v="watersports"><div class="icon">◒</div><div><div class="label">Watersports</div><div class="desc">Tubing, skiing, wakeboarding</div></div></button>
+        <button class="q-option" data-q="use" data-v="mixed"><div class="icon">◎</div><div><div class="label">A Bit Of Everything</div><div class="desc">Fish in the morning, ski later</div></div></button>
+      </div>
+    </div>
+    <div class="finder-step" data-step="2">
+      <div class="q-eyebrow">Step 2 of 5</div>
+      <div class="q-title">Where will you launch?</div>
+      <div class="q-grid">
+        <button class="q-option" data-q="water" data-v="lake"><div class="icon">≈</div><div><div class="label">Big Lakes</div><div class="desc">Lake of the Ozarks, Truman, Stockton</div></div></button>
+        <button class="q-option" data-q="water" data-v="river"><div class="icon">↝</div><div><div class="label">Rivers</div><div class="desc">Current and varied conditions</div></div></button>
+        <button class="q-option" data-q="water" data-v="small"><div class="icon">○</div><div><div class="label">Small Ponds / Coves</div><div class="desc">Quiet water and easy launches</div></div></button>
+        <button class="q-option" data-q="water" data-v="any"><div class="icon">⌖</div><div><div class="label">All Of The Above</div><div class="desc">I want versatility</div></div></button>
+      </div>
+    </div>
+    <div class="finder-step" data-step="3">
+      <div class="q-eyebrow">Step 3 of 5</div>
+      <div class="q-title">Who's usually coming along?</div>
+      <div class="q-grid">
+        <button class="q-option" data-q="group" data-v="1-2"><div class="icon">1</div><div><div class="label">Just 1-2 people</div><div class="desc">Solo or with a partner</div></div></button>
+        <button class="q-option" data-q="group" data-v="3-5"><div class="icon">3</div><div><div class="label">3-5 people</div><div class="desc">Small family</div></div></button>
+        <button class="q-option" data-q="group" data-v="6-9"><div class="icon">6</div><div><div class="label">6-9 people</div><div class="desc">Bigger family group</div></div></button>
+        <button class="q-option" data-q="group" data-v="10+"><div class="icon">10</div><div><div class="label">10+ people</div><div class="desc">Entertaining, big crew</div></div></button>
+      </div>
+    </div>
+    <div class="finder-step" data-step="4">
+      <div class="q-eyebrow">Step 4 of 5</div>
+      <div class="q-title">What's your comfortable budget?</div>
+      <div class="q-grid">
+        <button class="q-option" data-q="budget" data-v="20-35"><div class="icon">$</div><div><div class="label">$20k - $35k</div><div class="desc">Entry-level or quality used</div></div></button>
+        <button class="q-option" data-q="budget" data-v="35-55"><div class="icon">$$</div><div><div class="label">$35k - $55k</div><div class="desc">Solid mid-tier</div></div></button>
+        <button class="q-option" data-q="budget" data-v="55-85"><div class="icon">$$$</div><div><div class="label">$55k - $85k</div><div class="desc">Premium features</div></div></button>
+        <button class="q-option" data-q="budget" data-v="85+"><div class="icon">★</div><div><div class="label">$85k+</div><div class="desc">No compromises</div></div></button>
+      </div>
+    </div>
+    <div class="finder-step" data-step="5">
+      <div class="q-eyebrow">Step 5 of 5</div>
+      <div class="q-title">How much boating experience do you have?</div>
+      <div class="q-grid">
+        <button class="q-option" data-q="xp" data-v="first"><div class="icon">NEW</div><div><div class="label">First boat</div><div class="desc">Easy to drive, easy to maintain</div></div></button>
+        <button class="q-option" data-q="xp" data-v="some"><div class="icon">2</div><div><div class="label">Owned 1-2 before</div><div class="desc">Ready to step up</div></div></button>
+        <button class="q-option" data-q="xp" data-v="lots"><div class="icon">PRO</div><div><div class="label">Long-time boater</div><div class="desc">I know what I want</div></div></button>
+        <button class="q-option" data-q="xp" data-v="pro"><div class="icon">🏁</div><div><div class="label">Tournament / Pro</div><div class="desc">Performance first</div></div></button>
+      </div>
+    </div>
+    <div class="finder-step" data-step="6">
+      <div class="q-eyebrow">Your Match</div>
+      <div class="q-title">Here's what we'd recommend.</div>
+      <div class="recommendation" id="recBox"></div>
+      <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="inventory.html" class="btn btn-accent">See Matching Boats</a>
+        <a href="tel:8778272840" class="btn btn-outline">Talk To A Specialist</a>
+        <button class="btn btn-ghost" onclick="resetFinder()">Start Over</button>
+      </div>
+    </div>
+    <div class="finder-nav">
+      <button class="btn btn-ghost" id="finderBack" style="visibility:hidden;color:var(--mute)">Back</button>
+      <div class="step-pill" id="stepPill">Step 1 of 5</div>
+      <div></div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo"><img class="logo-img" src="https://www.proschoicemarine.com/images/logo-color.png" alt="Pro's Choice Marine"></a>
+        <p class="footer-about" style="margin-top:6px">13696 Hwy 7, Warsaw, MO<br><a href="tel:8778272840" style="color:var(--accent);font-weight:700">(877) 827-2840</a></p>
+        <p class="footer-about" style="margin-top:18px"><strong style="color:#fff;font-weight:700">Store Hours</strong><br>Tue-Sat: 8AM-5PM<br>Mon &amp; Sun: Closed</p>
+        <div class="social" style="margin-top:22px">
+          <a href="https://www.facebook.com/proschoicemarine" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/proschoicemarine/" aria-label="Instagram">◎</a>
+          <a href="https://www.youtube.com/@proschoicemarine7536/featured" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div>
+        <h5>Shop By Brand</h5>
+        <ul>
+          <li><a href="inventory.html?brand=Mercury%20Engines">Mercury Engines</a></li>
+          <li><a href="inventory.html?brand=Nitro">Nitro</a></li>
+          <li><a href="inventory.html?brand=Ranger">Ranger</a></li>
+          <li><a href="inventory.html?brand=Regency">Regency</a></li>
+          <li><a href="inventory.html?brand=Sun%20Tracker">Sun Tracker</a></li>
+          <li><a href="inventory.html?brand=Tahoe">Tahoe</a></li>
+          <li><a href="inventory.html?brand=Tracker">Tracker</a></li>
+          <li><a href="inventory.html?brand=Triton">Triton</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="inventory.html">Search Boats</a></li>
+          <li><a href="sell-trade.html">Sell / Trade</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="service.html">Service</a></li>
+          <li><a href="service.html">Storage</a></li>
+          <li><a href="boat-finder.html">Boat Finder AI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Newsletter</a></li>
+          <li><a href="contact.html">Join Our Team</a></li>
+          <li><a href="contact.html">Privacy Policy</a></li>
+          <li><a href="contact.html">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <div>©2026 Pro's Choice Marine. All Rights Reserved.</div>
+      <div>Family-owned, Warsaw-based.</div>
+    </div>
+  </div>
+</footer>
+<button class="chat-btn" id="chatBtn" aria-label="Open chat">💬</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">P</div>
+    <div><h4>Ask Pro's Choice</h4><div class="status">● Online</div></div>
+    <button class="chat-close" id="chatClose" aria-label="Close chat">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="quick-replies" id="quickReplies"></div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Type your question..." autocomplete="off">
+    <button class="chat-send" id="chatSend">Send</button>
+  </div>
+</div>
+<script src="site.js"></script>
+</body>
+</html>
