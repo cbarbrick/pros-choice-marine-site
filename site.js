@@ -437,19 +437,28 @@
 
   function initHeroVideo(){
     var frame = qs('#heroVideo');
-    if(!frame || !frame.contentWindow) return;
-    function command(func, args){
-      try {
-        frame.contentWindow.postMessage(JSON.stringify({event:'command', func:func, args:args || []}), '*');
-      } catch (err) {}
-    }
-    frame.addEventListener('load', function(){
-      command('mute');
-      command('seekTo', [8, true]);
-      command('playVideo');
+    if(!frame) return;
+    var videoId = frame.getAttribute('data-video-id') || 'MoQXNzZSgOo';
+    var params = new URLSearchParams({
+      autoplay:'1',
+      mute:'1',
+      controls:'0',
+      disablekb:'1',
+      fs:'0',
+      iv_load_policy:'3',
+      loop:'1',
+      playlist:videoId,
+      modestbranding:'1',
+      playsinline:'1',
+      rel:'0',
+      start:'12',
+      vq:'hd1080'
     });
-    setTimeout(function(){ command('mute'); command('seekTo', [8, true]); command('playVideo'); }, 900);
-    setTimeout(function(){ command('playVideo'); }, 2500);
+    if(location.protocol === 'http:' || location.protocol === 'https:'){
+      params.set('origin', location.origin);
+      params.set('widget_referrer', location.href);
+    }
+    frame.src = 'https://www.youtube.com/embed/' + videoId + '?' + params.toString();
   }
 
   function initChat(){
