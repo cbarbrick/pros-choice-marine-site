@@ -461,7 +461,12 @@
       if(lower.indexOf('used') !== -1){ route('inventory.html?type=used'); return; }
       if(lower.indexOf('pontoons') !== -1){ route('inventory.html?type=pontoon'); return; }
       if(lower.indexOf('bass boats') !== -1){ route('inventory.html?type=bass'); return; }
-      if(lower.indexOf('talk') !== -1 || lower.indexOf('phone') !== -1 || lower.indexOf('hours') !== -1){ add('Best number is <strong><a href="tel:8778272840">(877) 827-2840</a></strong>. Store hours are Tuesday-Saturday, 8AM-5PM.'); setReplies(firstReplies); return; }
+      if(lower.indexOf('specialist') !== -1 || lower.indexOf('talk') !== -1){
+        add('Absolutely. I can get you ready for a specialist. Tell me whether you want help with <strong>availability, payments, trade-in, or scheduling a visit</strong>. You can also call <strong><a href="tel:8778272840">(877) 827-2840</a></strong>.');
+        setReplies(['Check availability','Financing','Trade-in value','Store hours']);
+        return;
+      }
+      if(lower.indexOf('phone') !== -1 || lower.indexOf('hours') !== -1){ add('Best number is <strong><a href="tel:8778272840">(877) 827-2840</a></strong>. Store hours are Tuesday-Saturday, 8AM-5PM.'); setReplies(firstReplies); return; }
       add('I can help with the first-time buyer guide, inventory, payments, trade-in value, service, or store hours.');
       setReplies(firstReplies);
     }
@@ -469,7 +474,7 @@
     chatClose.addEventListener('click', function(){ chatWindow.classList.remove('open'); });
     send.addEventListener('click', function(){ var value = input.value.trim(); if(!value) return; input.value = ''; handle(value); });
     input.addEventListener('keydown', function(e){ if(e.key === 'Enter') send.click(); });
-    qsa('[data-chat]').forEach(function(btn){ btn.addEventListener('click', function(){ openChat(); handle(btn.dataset.chat); }); });
+    qsa('[data-chat]').forEach(function(btn){ btn.addEventListener('click', function(event){ event.preventDefault(); openChat(); handle(btn.dataset.chat); }); });
   }
 
   initInventory();
