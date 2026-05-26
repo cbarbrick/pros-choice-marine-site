@@ -338,6 +338,13 @@ section.block{padding:120px 0;position:relative}
 
 /* ============== INVENTORY ============== */
 .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+.inventory-summary{
+  display:none;margin:-16px 0 34px;padding:18px 22px;border-radius:10px;
+  background:#fff;border:1px solid var(--line);color:var(--ink-2);
+}
+.inventory-summary.show{display:block}
+.inventory-summary strong{display:block;font-family:var(--display);font-size:24px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);margin-bottom:4px}
+.inventory-summary span{font-size:13.5px;color:var(--mute)}
 .chip{
   padding:10px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   background:var(--bg-2);border:1px solid var(--line);color:var(--ink-2);

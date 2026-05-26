@@ -65,6 +65,44 @@
     "img": "https://s3.amazonaws.com/buildercloud/17c089ec82d43ec638fcdfcb2857882f.jpeg"
   },
   {
+    "brand": "Tahoe",
+    "name": "210 S Sport",
+    "tag": "NEW",
+    "tagClass": "gold",
+    "price": 64995,
+    "length": "21'",
+    "cat": [
+      "ski"
+    ],
+    "img": "https://s3.amazonaws.com/buildercloud/17c089ec82d43ec638fcdfcb2857882f.jpeg"
+  },
+  {
+    "brand": "Sun Tracker",
+    "name": "SportFish 22 DLX",
+    "tag": "NEW",
+    "tagClass": "gold",
+    "price": 62995,
+    "length": "22'",
+    "cat": [
+      "pontoon",
+      "fishing"
+    ],
+    "img": "https://s3.amazonaws.com/buildercloud/42a5c62ad1d29a0ef0a358eb62179a8d.jpeg"
+  },
+  {
+    "brand": "Regency",
+    "name": "230 LE3",
+    "tag": "NEW",
+    "tagClass": "gold",
+    "price": 82995,
+    "length": "23'",
+    "cat": [
+      "pontoon",
+      "ski"
+    ],
+    "img": "https://s3.amazonaws.com/buildercloud/154dd567b25f73834bea8030e9bf80c0.jpeg"
+  },
+  {
     "brand": "Regency",
     "name": "250 LE3 Sport",
     "tag": "NEW",
@@ -121,6 +159,20 @@
   function qsa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function money(n){ return '$' + Number(n || 0).toLocaleString(); }
   function escapeHtml(value){ return String(value).replace(/[&<>"]/g, function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]); }); }
+  function budgetRange(code){
+    return {
+      '20-35': { min: 20000, max: 35000, label: '$20k - $35k' },
+      '35-55': { min: 35000, max: 55000, label: '$35k - $55k' },
+      '55-85': { min: 55000, max: 85000, label: '$55k - $85k' },
+      '85+': { min: 85000, max: Infinity, label: '$85k+' }
+    }[code] || null;
+  }
+  function typeLabel(type){
+    return ({all:'All styles', fishing:'Fishing', pontoon:'Pontoons', bass:'Bass', ski:'Ski / Wake', used:'Used'})[type] || type;
+  }
+  function useToFilter(use){
+    return ({fishing:'fishing', family:'pontoon', watersports:'ski', mixed:'all'})[use] || 'all';
+  }
 
   var nav = qs('#siteNav');
   var mobToggle = qs('#mobToggle');
@@ -136,16 +188,37 @@
     var params = new URLSearchParams(window.location.search);
     var active = params.get('type') || 'all';
     var activeBrand = params.get('brand') || '';
+    var activeBudget = params.get('budget') || '';
+    var activeBrands = (params.get('brands') || '').split(',').map(function(b){ return b.trim(); }).filter(Boolean);
+    var matchMode = params.get('match') === '1';
     function render(){
       chips.forEach(function(chip){ chip.classList.toggle('active', chip.dataset.filter === active && !activeBrand); });
+      var budget = budgetRange(activeBudget);
+      var brandsToMatch = activeBrand ? [activeBrand] : activeBrands;
       var list = boats.filter(function(b){
         var typeMatch = active === 'all' || b.cat.indexOf(active) !== -1;
-        var brandMatch = !activeBrand || b.brand.toLowerCase() === activeBrand.toLowerCase() || (activeBrand === 'Mercury Engines' && b.brand === 'Mercury Engines');
-        return typeMatch && brandMatch;
-      });
+        var brandMatch = !brandsToMatch.length || brandsToMatch.some(function(brand){ return b.brand.toLowerCase() === brand.toLowerCase(); });
+        var budgetMatch = !budget || (b.price >= budget.min && b.price <= budget.max);
+        return typeMatch && brandMatch && budgetMatch;
+      }).sort(function(a,b){ return a.price - b.price; });
       if(activeBrand && activeBrand === 'Mercury Engines') list = [];
+      var summary = qs('#inventorySummary');
+      if(summary){
+        var hasFilters = matchMode || active !== 'all' || activeBudget || brandsToMatch.length;
+        if(hasFilters){
+          var details = [];
+          if(active !== 'all') details.push(typeLabel(active));
+          if(budget) details.push(budget.label);
+          if(brandsToMatch.length) details.push(brandsToMatch.join(', '));
+          summary.classList.add('show');
+          summary.innerHTML = '<strong>' + (matchMode ? 'Boats matching your Boat Finder results' : 'Filtered inventory') + '</strong><span>' + escapeHtml(details.join(' . ') || 'All featured boats') + ' . ' + list.length + ' featured match' + (list.length === 1 ? '' : 'es') + ' shown.</span>';
+        } else {
+          summary.classList.remove('show');
+          summary.innerHTML = '';
+        }
+      }
       if(list.length === 0){
-        grid.innerHTML = '<div class="tool full"><div class="t-eyebrow">Call For Current Stock</div><h3>' + escapeHtml(activeBrand || 'No Featured Boats') + '</h3><p class="sub">This page uses featured demo inventory. Call (877) 827-2840 for the latest live availability and incoming models.</p><a class="btn btn-dark" href="tel:8778272840">Call The Store</a></div>';
+        grid.innerHTML = '<div class="tool full"><div class="t-eyebrow">Call For Current Stock</div><h3>' + escapeHtml(matchMode ? 'No Exact Featured Matches' : (activeBrand || 'No Featured Boats')) + '</h3><p class="sub">No featured demo boats fit every selected filter. Clear the filters or call (877) 827-2840 for the latest live availability and incoming models in that price range.</p><a class="btn btn-dark" href="tel:8778272840">Call The Store</a></div>';
         return;
       }
       grid.innerHTML = list.map(function(b){
@@ -153,7 +226,15 @@
       }).join('');
     }
     chips.forEach(function(chip){
-      chip.addEventListener('click', function(){ active = chip.dataset.filter; activeBrand = ''; render(); });
+      chip.addEventListener('click', function(){
+        active = chip.dataset.filter;
+        activeBrand = '';
+        activeBudget = '';
+        activeBrands = [];
+        matchMode = false;
+        window.history.replaceState({}, '', 'inventory.html');
+        render();
+      });
     });
     render();
   }
@@ -199,6 +280,15 @@
     var box = qs('#recBox');
     if(!box) return;
     box.innerHTML = '<div class="rec-h">' + escapeHtml(r.type) + '</div><p style="color:var(--ink-2);font-size:15px;line-height:1.55">' + escapeHtml(r.why) + '</p><div class="rec-grid"><div><div class="label">Best Size</div><div class="val">' + escapeHtml(r.size) + '</div></div><div><div class="label">Comfort</div><div class="val">' + escapeHtml(finderState.group || 'Flexible') + '</div></div><div><div class="label">Use</div><div class="val">' + escapeHtml(finderState.use || 'Mixed') + '</div></div></div><div class="rec-brands">' + r.brands.map(function(b){ return '<span class="rec-brand">' + escapeHtml(b) + '</span>'; }).join('') + '</div>';
+    var link = qs('#matchingBoatsLink');
+    if(link){
+      var query = new URLSearchParams();
+      query.set('match', '1');
+      query.set('type', useToFilter(finderState.use));
+      if(finderState.budget) query.set('budget', finderState.budget);
+      if(r.brands.length) query.set('brands', r.brands.join(','));
+      link.href = 'inventory.html?' + query.toString();
+    }
   }
   qsa('.q-option').forEach(function(btn){
     btn.addEventListener('click', function(){
