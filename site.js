@@ -385,8 +385,30 @@
   window.navMonth = function(delta){ calDate = new Date(calDate.getFullYear(), calDate.getMonth() + delta, 1); renderCalendar(); };
   window.confirmService = function(){
     var confirm = qs('#svcConfirm');
+    var error = qs('#svcError');
     if(!confirm) return;
-    if(!selectedDate){ alert('Pick an available Tuesday-Saturday service day first.'); return; }
+    var name = (qs('#svcName') && qs('#svcName').value.trim()) || '';
+    var phone = (qs('#svcPhone') && qs('#svcPhone').value.trim()) || '';
+    var email = (qs('#svcEmail') && qs('#svcEmail').value.trim()) || '';
+    function showServiceError(message, target){
+      if(error){
+        error.textContent = message;
+        error.classList.add('show');
+      } else {
+        alert(message);
+      }
+      confirm.classList.remove('show');
+      if(target) target.focus();
+    }
+    if(error){
+      error.textContent = '';
+      error.classList.remove('show');
+    }
+    if(!name){ showServiceError('Please enter your name so the service team knows who to confirm with.', qs('#svcName')); return; }
+    if(!phone && !email){ showServiceError("Please enter a phone number or email so Pro's Choice can call, text, or email to confirm.", qs('#svcPhone')); return; }
+    if(!selectedDate){ showServiceError('Pick an available Tuesday-Saturday service day first.', qs('#calendar')); return; }
+    var method = phone ? 'text or call' : 'email';
+    confirm.innerHTML = '<strong>Request received, ' + escapeHtml(name) + ".</strong> We'll " + method + ' within one business day to confirm.';
     confirm.classList.add('show');
   };
 

@@ -73,8 +73,11 @@
       <div class="form-grid">
         <div><label>Service Type</label><select id="svcType"><option>Annual Maintenance / Tune-Up</option><option>Winterization</option><option>De-Winterization / Spring Prep</option><option>Mercury Engine Repair</option><option>Electronics / Electrical</option><option>Hull / Cosmetic Repair</option><option>Diagnostic Inspection</option><option>Winter Storage Drop-Off</option><option>Other</option></select></div>
         <div><label>Boat Make / Model</label><input type="text" id="svcBoat" placeholder="e.g. 2022 Nitro Z19"></div>
+        <div><label>Your Name *</label><input type="text" id="svcName" placeholder="Full name" autocomplete="name"></div>
+        <div><label>Phone Number</label><input type="tel" id="svcPhone" placeholder="(555) 555-5555" autocomplete="tel"></div>
+        <div class="full"><label>Email</label><input type="email" id="svcEmail" placeholder="you@email.com" autocomplete="email"><div class="form-note">Enter a phone number or email so Pro's Choice can confirm by call, text, or email.</div></div>
         <div class="full"><label style="margin-top:8px">Pick A Day <small style="text-transform:none;letter-spacing:0;color:var(--mute);margin-left:6px;font-weight:500">Tue-Sat only</small></label><div class="cal-head"><h4 id="calMonth">Month</h4><div class="cal-nav"><button onclick="navMonth(-1)" aria-label="Previous month">‹</button><button onclick="navMonth(1)" aria-label="Next month">›</button></div></div><div class="calendar" id="calendar"></div></div>
-        <div class="full"><button class="btn btn-dark" style="width:100%;justify-content:center" onclick="confirmService()">Request This Appointment</button><div class="schedule-confirm" id="svcConfirm"><strong>Request received.</strong> We'll text or call within one business day to confirm.</div></div>
+        <div class="full"><button class="btn btn-dark" style="width:100%;justify-content:center" onclick="confirmService()">Request This Appointment</button><div class="form-error" id="svcError"></div><div class="schedule-confirm" id="svcConfirm"><strong>Request received.</strong> We'll text, call, or email within one business day to confirm.</div></div>
       </div>
     </div>
   </div>
