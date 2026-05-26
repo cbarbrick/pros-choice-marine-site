@@ -438,6 +438,13 @@
   function initHeroVideo(){
     var frame = qs('#heroVideo');
     if(!frame || !frame.contentWindow) return;
+    var hero = qs('.hero-video-wrap');
+    var revealed = false;
+    function revealVideo(){
+      if(revealed || !hero) return;
+      revealed = true;
+      hero.classList.add('video-ready');
+    }
     function command(func){
       try {
         frame.contentWindow.postMessage(JSON.stringify({event:'command', func:func, args:[]}), '*');
@@ -449,6 +456,7 @@
     });
     setTimeout(function(){ command('mute'); command('playVideo'); }, 900);
     setTimeout(function(){ command('playVideo'); }, 2500);
+    setTimeout(revealVideo, 3400);
   }
 
   function initChat(){

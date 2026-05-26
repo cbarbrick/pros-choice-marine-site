@@ -122,12 +122,14 @@ h3.display{font-size:clamp(26px,3.2vw,38px);font-weight:800}
     linear-gradient(135deg,#070b14 0%,#0e1a30 50%,#050810 100%);
 }
 .hero-poster{
-  position:absolute;inset:0;z-index:1;
+  position:absolute;inset:0;z-index:3;
   background-image:url('https://i.ytimg.com/vi/MoQXNzZSgOo/maxresdefault.jpg'),url('https://dlqxt4mfnxo6k.cloudfront.net/proschoicemarine.com/aHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2J1aWxkZXJjbG91ZC9iOGZlYTcwMjgyMmQxZTRhMTk5MjViNDYxMWQ5ZDk4MC5qcGVn/webp/800/800');
   background-size:cover;background-position:center;
-  opacity:.2;
+  opacity:1;
   animation:slowZoom 24s ease-in-out infinite alternate;
+  transition:opacity .8s ease;
 }
+.hero-video-wrap.video-ready .hero-poster{opacity:.2}
 @keyframes slowZoom{from{transform:scale(1.02)}to{transform:scale(1.12)}}
 .hero-bgvideo-wrap{
   position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;background:transparent;
@@ -137,8 +139,10 @@ h3.display{font-size:clamp(26px,3.2vw,38px);font-weight:800}
   transform:translate(-50%,-50%);
   width:max(100vw,177.78vh);
   height:max(56.25vw,100vh);
-  border:0;pointer-events:none;opacity:.96;
+  border:0;pointer-events:none;opacity:0;
+  transition:opacity .8s ease;
 }
+.hero-video-wrap.video-ready .hero-bgvideo{opacity:.96}
 .hero-video-overlay{
   position:absolute;inset:0;z-index:5;
   background:
