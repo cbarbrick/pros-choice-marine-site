@@ -506,7 +506,9 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
   font-size:12px;color:#75736a;
 }
+.footer-credit{color:#8d8b82}
 .footer-bot a{color:var(--accent)}
+.footer-bot a:hover{color:#fff}
 .social{display:flex;gap:10px}
 .social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;transition:all .15s;color:#dcdbd2;font-weight:700}
 .social a:hover{background:var(--accent);color:#000}
