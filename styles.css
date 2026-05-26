@@ -201,11 +201,11 @@ h3.display{font-size:clamp(26px,3.2vw,38px);font-weight:800}
 .ask-body strong{display:block;font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:.01em;color:var(--ink);text-transform:uppercase;margin-bottom:4px}
 .ask-body > span{display:block;font-size:14px;color:var(--mute);margin-bottom:12px}
 .ask-chips{display:flex;flex-wrap:wrap;gap:6px}
-.ask-chips button{
+.ask-chips a,.ask-chips button{
   padding:8px 14px;border-radius:999px;background:var(--bg);border:1px solid var(--line);
   font-size:12px;font-weight:600;color:var(--ink-2);transition:all .15s;letter-spacing:.04em;
 }
-.ask-chips button:hover{background:var(--ink);color:var(--accent);border-color:var(--ink)}
+.ask-chips a:hover,.ask-chips button:hover{background:var(--ink);color:var(--accent);border-color:var(--ink)}
 .ask-cta{
   background:var(--ink);color:#fff;padding:14px 24px;border-radius:999px;
   font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;

@@ -303,6 +303,18 @@
   var back = qs('#finderBack');
   if(back){ back.addEventListener('click', function(){ if(finderStep > 1){ finderStep -= 1; updateFinder(); } }); }
   window.resetFinder = function(){ finderState = {}; finderStep = 1; qsa('.q-option').forEach(function(btn){ btn.classList.remove('selected'); }); updateFinder(); };
+  function initFinderPreset(){
+    if(!qsa('.finder-step').length) return;
+    var params = new URLSearchParams(window.location.search);
+    var presetUse = params.get('use');
+    if(!presetUse) return;
+    var option = qs('.q-option[data-q="use"][data-v="' + presetUse + '"]');
+    if(!option) return;
+    finderState.use = presetUse;
+    option.classList.add('selected');
+    finderStep = 2;
+  }
+  initFinderPreset();
   updateFinder();
 
   function initFinancing(){
